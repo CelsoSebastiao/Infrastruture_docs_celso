@@ -24,7 +24,7 @@
  #Passo2: Criar o arquivo docker-compose.yml no server e colar:
  services:
   ollama:
-    image: ollama/ollama:latest
+    image: ollama/ollama:latest #(motor de Inferencia)
     container_name: ollama
     volumes:
       - ollama:/root/.ollama
@@ -48,9 +48,16 @@ volumes:
   open-webui:
   
 #1. Digitar: 
- docker compose up
+sudo docker compose up -d
  
  
+ #2 e depois do sudo docker compose up -d terminar vamos baixar o modelo do ollama
+ sudo docker exec -it ollama ollama pull gemma3:1b
+ 
+ #3 Confirmar que o modelo está disponível
+  sudo docker exec -it ollama ollama list
+  #gemma3:1b    97558784bdc9    806 MB    About a minute ago
+  #de seguida abra o openWebUI
  
   
     
